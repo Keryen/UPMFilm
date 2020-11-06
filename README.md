@@ -24,6 +24,5 @@ ya que una vez cambiado a modo oscuro, al navegar por la página, se recarga
 el estilo y da un destello al inicio de la recarga.
 
 ## Autores
-Matrícula: y160187; Manuel Hernández-Ros Bellosillo
-
-Matrícula: y160329; Enrique González Rodríguez
+Manuel Hernández-Ros Bellosillo
+Enrique González Rodríguez
