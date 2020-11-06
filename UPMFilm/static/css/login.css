@@ -1,0 +1,48 @@
+body{
+    padding-top:10rem;
+    padding-bottom:4.2rem;
+    background:rgba(0, 0, 0, 0.76);
+    background-image: url(../resources/images/Cinema.jpg);
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1{
+    font-family: 'Kaushan Script', cursive;
+}
+
+
+
+.myform{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 1rem;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 1.1rem;
+    outline: 0;
+    max-width: 500px;
+}
+
+.tx-tfm{
+    text-transform:uppercase;
+}
+
+#alert{
+    color: var(--f-color);
+    background-color: var(--nav-color);
+    border-color: var(--f-color);
+}
+
+#second{display:none;}

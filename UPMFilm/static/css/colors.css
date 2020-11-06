@@ -1,0 +1,78 @@
+/*
+:root {
+    --f-color: #000000;
+    --claro2: #EFC3F5;
+    --nav-color: #FAA6FF;
+    --normal: #7353BA;
+    --btn-color: #2F195F;
+    --bg-color: #FFFFFF;
+}
+
+[data-theme="dark"] {
+    --f-color: #FFFFFF;
+    --claro2: #EFC3F5;
+    --btn-color: #FAA6FF;
+    --normal: #7353BA;
+    --nav-color: #2F195F;
+    --bg-color: #0F1020;
+}
+*/
+
+:root {
+    --f-color: #000000;
+    --nav-color: #FF5151;
+    --normal: #72FFEE;
+    --btn-color: #2F195F;
+    --bg-color: #FDEFED;
+}
+
+[data-theme="dark"] {
+    --f-color: #FFFFFF;
+    --btn-color: #FF5151;
+    --normal: #72FFEE;
+    --nav-color: #2F195F;
+    --bg-color: #272932;
+}
+
+/* To all elements */
+* {
+    transition-property: background-color;
+    transition-duration: .6s;
+} 
+
+body {
+    background-color: var(--bg-color);
+}
+
+i:hover {
+    color: var(--bg-color);
+}
+
+.navbar{
+    background-color: var(--nav-color);
+}
+
+.btn {
+    color: var(--f-color);
+    background-color: var(--nav-color);
+    border-color: var(--f-color);
+}
+
+.btn:hover {
+    color: var(--bg-color);
+    background-color: var(--btn-color);
+    border-color: transparent;
+}
+
+.alert{
+    color: var(--f-color);
+    background-color: var(--nav-color);
+    border-color: var(--f-color);
+}
+
+
+.alert:hover {
+    color: var(--bg-color);
+    background-color: var(--btn-color);
+    border-color: transparent;
+}

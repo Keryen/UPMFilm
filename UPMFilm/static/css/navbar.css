@@ -1,0 +1,109 @@
+.centered {
+    left:50%;
+}
+
+#svg {
+    width: 30px;
+    height: 30px;
+}
+
+#UsersLink{
+    margin-left: 50px;
+    font-size: 25px;
+    margin-top: 0px;
+}
+
+#FilmLink{
+    font-size: 25px;
+    margin-top: 0px;
+}
+
+.user-menu{
+    margin-left: 50px;
+}
+
+#path0 {
+    fill: var(--f-color);
+}
+
+#nav-btn-group {
+    margin-right: 1em;
+}
+
+#sign-out-a {
+    color: var(--f-color);
+}
+
+#UPMFilm {
+    display: contents;
+    color: var(--f-color);
+}
+
+#a-UPMFilm{
+    margin-left: 10px;
+    margin-top: 0px;
+    font-size: 40px;
+}
+
+#search-input {
+    margin-left: 400px;
+    width:25em;
+}
+
+.nav-link {
+    color: var(--f-color);
+    margin-top: 10px;
+}
+
+.navbar .navbar-toggler{
+    color: var(--f-color);
+    background-color: transparent;
+    border-color: var(--f-color);
+}
+
+body {
+    margin-top: 5em;
+}
+
+
+@media(max-width: 1350px){
+    #search-input {
+        margin-left: 160px;
+        width:20em;
+    }
+}
+
+@media(max-width: 995px){
+
+        #nav-btn-group {
+            margin-top: 1em;
+        }
+
+        #search-input {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 0px;
+        }
+    
+        #search-button{
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        
+        body {
+            margin-top: 6em;
+        }
+
+        #UsersLink{
+            margin-left: 0px;
+        }
+
+
+        .user-menu{
+            margin-left: 0px;
+        }
+
+    }
+
+
+

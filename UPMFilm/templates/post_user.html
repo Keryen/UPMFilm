@@ -1,0 +1,163 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/colors.css" %}" />
+    <link rel="stylesheet" href="{% static "css/navbar.css" %}" />
+    <link rel="stylesheet" href="{% static "css/form.css" %}" />
+</head>
+
+<body>
+    <nav id="navbar" class="navbar fixed-top navbar-expand-lg">
+        <a id="UPMFilm" href="{% url 'dashboard' %}" class="navbar-brand" href="#">
+            <svg id="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="400" height="400" viewBox="0, 0, 400,400">
+                <g id="svgg">
+                    <path id="path0"
+                        d="M45.087 57.272 C 35.380 82.570,35.561 185.242,45.379 221.875 C 52.011 246.625,60.990 250.000,120.208 250.000 C 157.219 250.000,187.500 254.373,187.500 259.719 C 187.500 282.556,146.659 325.000,124.684 325.000 C 108.576 325.000,103.130 331.112,107.980 343.750 C 118.320 370.696,281.680 370.696,292.020 343.750 C 296.870 331.112,291.424 325.000,275.316 325.000 C 253.341 325.000,212.500 282.556,212.500 259.719 C 212.500 254.373,242.781 250.000,279.792 250.000 C 356.129 250.000,362.018 241.823,362.329 135.397 C 362.621 35.545,365.863 37.500,200.000 37.500 C 77.190 37.500,51.412 40.790,45.087 57.272 M347.654 117.922 C 355.277 238.358,356.329 237.500,201.099 237.500 C 46.749 237.500,50.000 239.763,50.000 132.311 C 50.000 46.513,45.770 48.677,205.595 52.739 L 343.750 56.250 347.654 117.922 M216.318 96.479 C 194.112 104.126,91.719 200.065,106.256 199.603 C 113.127 199.385,138.167 179.697,161.898 155.853 C 223.179 94.281,240.269 101.842,180.662 164.154 L 131.250 215.808 170.750 208.441 C 207.024 201.677,334.107 100.512,306.777 100.156 C 300.192 100.070,273.576 120.728,247.631 146.063 C 221.687 171.397,196.641 188.308,191.975 183.642 C 187.309 178.976,196.120 164.206,211.555 150.820 C 240.103 126.060,243.517 87.112,216.318 96.479 M228.125 346.322 C 212.656 349.301,187.344 349.301,171.875 346.322 C 156.406 343.342,169.062 340.905,200.000 340.905 C 230.938 340.905,243.594 343.342,228.125 346.322 "
+                        stroke="none" fill="#000000" fill-rule="evenodd">
+                    </path>
+                </g>
+            </svg>
+            <h2 id="a-UPMFilm">UPMFilm</h2>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                {% if request.session.is_staff %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="dashboard.html" id="UsersLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Users
+                    </a>
+
+                    <div class="dropdown-menu user-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{% url 'post_user' %}">Add or edit</a>
+                        <a class="dropdown-item" href="{% url 'delete_user' %}">Delete</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="dashboard.html" id="FilmLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Films
+                    </a>
+                    <div class="dropdown-menu film-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{% url 'post_film' %}">Add or edit</a>
+                        <a class="dropdown-item" href="{% url 'delete_film' %}">Delete</a>
+                    </div>
+                </li>
+                {% endif %}
+
+            </ul>
+            <div id="nav-btn-group" class="btn-group">
+                <button id="color-button" class="btn" type="" data-toggle="tooltip" data-placement="bottom"
+                    title="Color theme"><i class="fas fa-adjust"></i></button>
+                <a class="btn" href="{% url 'logout' %}" data-toggle="tooltip" data-placement="bottom" title="Sign Out"><i
+                        class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <input type="hidden" id="error"            value="{{error}}">
+    <input type="hidden" id="user_name_hid"    value="{{user_name}}">
+    <input type="hidden" id="user_email_hid"   value="{{user_email}}">
+    {% if error%}
+    <div id="alert" class="alert alert-warning alert-dismissible fade show col-md-4 mx-auto" data-dismiss="alert" role="alert">
+        {{error}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 mx-auto">
+                <div class="myform form ">
+                    <div class="logo mb-3">
+                        <div class="col-md-12 text-center">
+                            <h1>Add or edit user</h1>
+                        </div>
+                    </div>
+                    <form action="{% url 'post_user' %}" method="post" id="post_user_form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>User name</label>
+                            <input type="text" name="user_name" class="form-control" id="user_name"
+                            placeholder="User name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="user_password" class="form-control" id="user_password"
+                            placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="user_email" class="form-control" id="user_email"
+                            placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Role</label>
+                            <select class="form-control" id="role" name="user_is_admin" required>
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 text-center ">
+                            <button id="confirm" type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="acceptModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Film</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <p><b>Name:</b> <label id="name_modal"></label></p>
+              <p><b>Email:</b> <label id="email_modal"></label></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="saveUser">Save</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/468ae655a6.js" crossorigin="anonymous"></script>
+
+    <script src="{% static "javascript/color.js" %}"></script>
+    <script src="{% static "javascript/post_user.js" %}"></script>
+</body>
+
+</html>
